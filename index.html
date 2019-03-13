@@ -8,10 +8,17 @@
 </head>
 <body>
     <header class="main">
+        <nav>
+            <div class="contenedor">
+                <a href="http://www.birpin.com" target="_blank">Ir a birpin.com</a>
+            </div>
+        </nav>
         <div class="overlay"></div>
         <img src="img/birpin-white.svg" alt="birpin" class="logo">
         <h2>Optimizá tiempo y presupuesto en tus procesos de selección.</h2>
         <h3>Pagá sólo por los candidatos de tu interés.</h3>
+        <div><a  id="iracontacto"  class="btn">Recibí más información</a></div>
+        
     </header>
 
     <section class="s1">
@@ -19,9 +26,9 @@
             <div>
                 <h2>¿Cómo funciona birpin?</h2>
                 <ul>
-                    <li><img src="img/check.svg" alt=""> <p>Creá tu cuenta y <strong>publicá anuncios ilimitados</strong></p></li>
+                    <li><img src="img/check.svg" alt=""> <p>Creá tu cuenta y <strong>publicá anuncios ilimitados.</strong></p></li>
                     <li><img src="img/check.svg" alt=""> <p>Nuestra sistema te recomendará a los mejores perfiles para cubrir el puesto.</p></li>
-                    <li><img src="img/check.svg" alt=""> <p>Los usuarios con intereses similares a tu oferta recibirán la recomendación para postularse.</p></li>
+                    <li><img src="img/check.svg" alt=""> <p>Usuarios que se interesaron en ofertas similares a la tuyac recibirán invitación para postularse</p></li>
                     <li><img src="img/check.svg" alt=""> <p><strong>Pagá sólo por los perfiles que te interesen.</strong></p></li>
                 </ul>
             </div>
@@ -42,12 +49,7 @@
                 <h2>¿Qué es birpin?</h2>
                 <h5>    BIRPIN Responde al acrónimo Búsquedas
                         Inteligentes y Relacionamiento Profesional
-                        Integrados, expresa el evolucionado espíritu
-                        que creemos en un mundo de convergencia
-                        digital debemos brindar a la comunidad que
-                        busca conectarse y desarrollarse
-                        profesionalmente de una forma ágil, clara,
-                        transparente, inteligente y abierta.</h5>
+                        Integrados. Nuestra misión es "Conectar inteligentemente a personas con su futuro profesional.”</h5>
             </article>
         </div>
     </section>
@@ -108,7 +110,7 @@
         </div>
     </section>
 
-    <section class="contacto">
+    <section class="contacto" id="contacto">
         <div class="contenedor">
 
             <article>
@@ -123,31 +125,99 @@
 
 
             </article>
-            <form action="">
+            <form method="POST">
+                <input type="hidden" name="recipient" value="lucas.gallucci@workiasolutions.com">
                 <div>
                     <label for="nombre">nombre</label>
-                    <input type="text" name="nombre" placeholder="Ingresá tu nombre completo">
+                    <input type="text" name="nombre" required placeholder="Ingresá tu nombre completo">
                 </div>
 
                 <div>
-                        <label for="nombre">email</label>
-                        <input type="text" name="empresa" placeholder="Dejanos tu correo electrónico">
+                        <label for="email">email</label>
+                        <input type="email" name="email" required placeholder="Dejanos tu correo electrónico">
                     </div>
 
                 <div>
-                    <label for="nombre">empresa</label>
-                    <input type="text" name="empresa" placeholder="Ingresá la compañía a la que representás">
+                    <label for="empresa">empresa</label>
+                    <input type="text" name="empresa" required placeholder="Ingresá la compañía a la que representás">
                 </div>
 
                 <div>
-                    <label for="nombre">teléfono</label>
-                    <input type="text" name="telefono" placeholder="Ingresá tu teléfono (será más fácil contactarte)">
+                    <label for="telefono">teléfono</label>
+                    <input type="tel" name="telefono" required placeholder="Ingresá tu teléfono (será más fácil contactarte)">
+                </div>
+
+                <div>
+                    <input type="submit" value="enviar formulario">
                 </div>
 
 
             </form>
+
+            <div id="ok">
+                <p>¡Gracias por susbribirte a nuestra lista de novedades!</p>
+            </div>
         </div>
     </section>
 
+    <footer>
+        <div class="contenedor">
+            <p>Birpin es una empresa de Workia Solutions</p>
+           <a href="http://www.workiasolutions.com" target="_blank"> <img src="img/workia.svg" alt="" class="logo"></a>
+        </div>
+    </footer>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+
+
+
+  <script type="text/javascript">
+    $(document).on("ready", function(){
+       alto=$("form").css("height");
+       $("#ok").css({
+           "height":"0",
+           "width":"0",
+           "overflow":"hidden"
+           });
+    
+
+        $("form").submit(function(){
+           //$("form").css("height","0");
+            var url = "enviar.php";
+           $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: $("form").serialize(),
+                  success: function(data){  		
+                     $("#ok").css("height", alto);
+                     $("form").css({
+                       "height":"0",
+                       "overflow":"hidden"
+                   });
+                  }
+            });
+           return false; // Evitar ejecutar el submit del formulario.
+        });
+
+
+
+        $("#iracontacto").on("click", function(){
+ 	
+ 			var $position = $("#contacto").offset().top;
+ 			
+			$("body, html").animate({
+				scrollTop: $position
+			}, 1000, 'easeInOutQuint' /* speed */ );
+ 		})
+        
+    })
+</script>
 </body>
 </html>

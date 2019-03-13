@@ -53,7 +53,7 @@ table {
   border-spacing: 0;
 }
 
-.gradient-orange, .about {
+.gradient-orange, .about, header.main .btn {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff9900+0,ec4e21+100 */
   background: #ff9900;
   /* Old browsers */
@@ -117,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
 header.main {
   background: url("../img/back_header.jpg") no-repeat center;
   background-size: cover;
-  padding: 120px 0 200px;
+  padding: 0 0 200px;
   text-align: center;
   position: relative;
 }
@@ -128,6 +128,16 @@ header.main .overlay {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
+}
+header.main nav {
+  margin-bottom: 50px;
+  padding-top: 10px;
+  position: relative;
+  z-index: 999999;
+  text-align: right;
+}
+header.main nav a {
+  color: white;
 }
 header.main .logo {
   max-width: 150px;
@@ -151,12 +161,27 @@ header.main h3 {
   font-size: 30px;
   max-width: 800px;
   margin: auto;
-  background: #FF8103;
   padding: 5px;
   color: white;
   display: inline-block;
   z-index: 9999;
   position: relative;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+header.main .btn {
+  padding: 15px 30px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 10px auto;
+  position: relative;
+  z-index: 999999;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  top: 20px;
+  display: inline-block;
 }
 header.main:after, header.main:before {
   content: "";
@@ -168,12 +193,12 @@ header.main:after, header.main:before {
   z-index: 99;
 }
 header.main:before {
-  left: -10px;
-  transform: rotate(5deg);
+  left: 0px;
+  transform: skewY(5deg);
 }
 header.main:after {
-  right: -10px;
-  transform: rotate(-5deg);
+  right: 0px;
+  transform: skewY(-5deg);
 }
 @media (max-width: 1000px) {
   header.main h2 {
@@ -349,9 +374,25 @@ form div input {
 form div input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
+form div input[type=submit] {
+  background: white;
+  border-radius: 3px;
+  color: #007DA7;
+  font-size: 18px;
+}
 form div input:focus {
   box-shadow: none;
   outline: none;
+}
+
+footer {
+  padding: 15px 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+footer .logo {
+  max-width: 150px;
 }
 
 /*# sourceMappingURL=style.css.map */
