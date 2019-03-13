@@ -98,6 +98,7 @@ table {
 
 body {
   font-family: "Roboto", sans-serif;
+  color: #343434;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -316,6 +317,32 @@ h2 {
   }
 }
 
+.info {
+  display: flex;
+  margin: 40px 0;
+}
+.info h3 {
+  flex: 1;
+  font-size: 19px;
+  line-height: 2em;
+  background: #094074;
+  padding: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.info p {
+  flex: 2;
+  line-height: 2em;
+  padding: 15px;
+  border: 1px solid #094074;
+}
+@media (max-width: 1000px) {
+  .info {
+    flex-direction: column;
+  }
+}
+
 .s2 {
   padding: 100px 0;
 }
@@ -331,6 +358,11 @@ h2 {
   padding: 10px;
   flex: 1;
 }
+@media (max-width: 800px) {
+  .contacto .contenedor {
+    flex-direction: column;
+  }
+}
 .contacto .contenedor p {
   line-height: 2em;
 }
@@ -341,9 +373,8 @@ h2 {
   margin: 20px 0;
 }
 .contacto .contacto-list li strong {
-  background: white;
-  color: #007DA7;
-  padding: 5px;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .divider {
